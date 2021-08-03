@@ -14,13 +14,14 @@ function onClickButton () { // 제시어가 비어 있는가?
     if (!word) { // 제시어가 비어있는 경우
         word = newWord;
         $word.textContent = word;
-        $Input.value = '';
         const order = Number($order.textContent);
         if(order + 1 > number) {
             $order.textContent = 1 ;
         } else {
             $order.textContent = order + 1;
         };
+        $Input.value ='';
+        $Input.focus();
     } else { // 제시어가 있는 경우
         if(word[word.length - 1] === newWord[0]) { // 올바른가?
             word = newWord; //입력한 단어가 제시어가 된다.
@@ -32,9 +33,13 @@ function onClickButton () { // 제시어가 비어 있는가?
             } else {
                 $order.textContent = order + 1;
             } ;
+            $Input.value = '';
+            $Input.focus();
         } else { // 올바르지 않은가?
-
+            alert('틀렸습니다!!')
         }
+        $Input.value = '';
+        $Input.focus();
     }
 }
 
