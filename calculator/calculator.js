@@ -42,5 +42,25 @@ document.querySelector('#plus').addEventListener('click', onClickOperator);
 document.querySelector('#minus').addEventListener('click', onClickOperator);
 document.querySelector('#divide').addEventListener('click', onClickOperator);
 document.querySelector('#multiply').addEventListener('click', onClickOperator);
-document.querySelector('#calculate').addEventListener('click', onClickOperator);
-document.querySelector('#clear').addEventListener('click', onClickOperator);
+document.querySelector('#calculate').addEventListener('click', () => {
+    if(numTwo) {
+        if(operator == '+') {
+            $result.value = parseInt(numOne) + parseInt(numTwo);
+        } else if(operator == '-') {
+            $result.value = parseInt(numOne) - parseInt(numTwo);
+        } else if(operator == 'x') {
+            $result.value = parseInt(numOne) * parseInt(numTwo);
+        } else if(operator == '/') {
+            $result.value = parseInt(numOne) / parseInt(numTwo);
+        }
+    } else {
+        alert('두번째 값을 입력하세요')
+    }
+});
+document.querySelector('#clear').addEventListener('click', () => {
+    numOne = '';
+    operator = '';
+    numTwo = '';
+    $operator.value = "";
+    $result.value = "";
+});
