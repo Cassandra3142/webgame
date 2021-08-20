@@ -5,12 +5,18 @@ const $operator = document.querySelector('#operator');
 const $result = document.querySelector('#result');
 
 const onClickNumber = (event) => {
+    //operator가 존재 하지 않을 경우
     if(!operator) {
         numOne += event.target.textContent;
-    } else {
-        numTwo += event.target.textContent;
+        $result.value += event.target.textContent;
+        return;
     }
-    $result.value += event.target.textContent;
+    //operator가 존재할 경우
+    if (!numTwo) {
+        $result.value = '';
+        numTwo += event.target.textContent;
+        $result.value += event.target.textContent;
+    }
 };
 
 const onClickOperator = (event) => {
