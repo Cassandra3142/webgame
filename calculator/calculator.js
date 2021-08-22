@@ -22,7 +22,7 @@ const onClickNumber = (event) => {
 const onClickOperator = (event) => {
     if(numOne) {
         operator = event.target.textContent;
-        $operator.value =event.target.textContent;
+        $operator.value = event.target.textContent;
     } else {
         alert('첫번째 숫자를 먼저 입력하세요');
     }
