@@ -15,3 +15,29 @@ for (let n = 0; n < 4; n++) {
 }
 
 console.log(answer);
+
+const tries = [];
+
+function check(input) {
+  if(input.length !== 4) {
+    return alert('숫자를 4개 입력하세요.');
+  }
+  if(new Set(input).size !== 4) {
+    return alert('숫자가 중복되지 않게 입력하세요.');
+  }
+  if(tries.includes(input)) {
+    return alert('이미 시도 한 값입니다.');
+  }
+  return true;
+}
+
+$form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = $input.value;
+  $input.value = '';
+  if(check(value)) {
+    tries.push(value);
+  } else {
+    // 에러
+  }
+});
