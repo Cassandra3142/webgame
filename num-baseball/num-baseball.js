@@ -35,9 +35,16 @@ $form.addEventListener('submit', (event) => {
   event.preventDefault();
   const value = $input.value;
   $input.value = '';
-  if(check(value)) {
-    tries.push(value);
-  } else {
-    // 에러
+  if(!check(value)) {
+    return;
+  };
+  if (answer.join('') === value) {
+    $logs.textContent = '홈런!!';
+    return;
   }
+  if (tries.length >= 9) {
+    const message = document.createTextNode(`틀렸습니다. 정답은 ${answer.join('')} 입니다.`);
+    $logs.appendChild(message);
+    return;
+  };
 });
