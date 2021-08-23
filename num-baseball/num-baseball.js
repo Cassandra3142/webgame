@@ -41,10 +41,25 @@ $form.addEventListener('submit', (event) => {
   if (answer.join('') === value) {
     $logs.textContent = '홈런!!';
     return;
-  }
+  };
   if (tries.length >= 9) {
     const message = document.createTextNode(`틀렸습니다. 정답은 ${answer.join('')} 입니다.`);
     $logs.appendChild(message);
-    return;
+    return; 
   };
-});
+
+  let ball = 0;
+  let strike = 0;
+  for(k = 0; k < answer.length; k++) {
+    const index = value.indexOf(answer[k]);
+    if (index > -1) {
+      if(index === 1){
+        strike += 1 ;
+      } else {
+        ball += 1 ;
+      }
+    }
+  }
+    $logs.append(`${value} : strike : ${strike}, ball : ${ball}`,document.createElement('br'));
+    tries.push(value);
+  });
