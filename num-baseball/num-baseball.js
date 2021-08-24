@@ -9,9 +9,9 @@ for (let n = 0; n < 9; n++) {
 
 const answer = []; //무작위로 공 네개 선택
 for (let n = 0; n < 4; n++) {
-  const index = Math.floor(Math.random() * numbers.length);
-  answer.push(numbers[index]);
-  numbers.slice(index,1);
+  const index = Math.floor(Math.random() * numbers.length); // 0 ~ 8
+  answer.push(numbers[index]); // numbers[0] ~ numbers[8] 중 무작위로 answer에 넣음
+  numbers.splice(index,1); // numbers[index]에서 1개 제거 
 }
 
 console.log(answer);
@@ -53,7 +53,7 @@ $form.addEventListener('submit', (event) => {
   for(k = 0; k < answer.length; k++) {
     const index = value.indexOf(answer[k]);
     if (index > -1) {
-      if(index === 1){
+      if(index === k){
         strike += 1 ;
       } else {
         ball += 1 ;
