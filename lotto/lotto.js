@@ -18,3 +18,8 @@ while (candidate.length > 0) {
 // }
 console.log(shuffle);
 
+const winBalls = shuffle.slice(0,6).sort((a,b) => a - b);
+const bonusBall = shuffle[6];
+
+console.log(winBalls,bonusBall);
+
