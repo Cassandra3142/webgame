@@ -23,3 +23,23 @@ const bonusBall = shuffle[6];
 
 console.log(winBalls,bonusBall);
 
+const $result = document.querySelector('#result');
+const $bonus = document.querySelector('#bonus');
+
+const showBall = (number, $target) => {
+  const $ball = document.createElement('div');
+  $ball.className = 'ball';
+  $ball.textContent = number;
+  $target.appendChild($ball);
+}
+
+for(let i = 0 ; i < 6 ; i++) {
+  setTimeout(() => {
+    showBall(winBalls[i], $result)
+  },(i + 1) * 1000);
+  
+}
+setTimeout(() => {
+  showBall(bonusBall,$bonus)
+},7000);
+
