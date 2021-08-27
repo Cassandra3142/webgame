@@ -16,3 +16,19 @@ const rspX = { // 위의 변수들을 객체로 묶어서 표현
   rock : '-220px',
   paper : '-440px',
 }
+
+let computerChoice = 'scissors';
+const changeComputerChoice = () => {
+  if(computerChoice === 'rock') {
+    computerChoice = 'scissors';
+  } else if (computerChoice === 'scissors') {
+    computerChoice = 'paper';
+  } else if (computerChoice ==='paper') {
+    computerChoice = 'rock';
+  }
+  $computer.style.background = `url(${IMG_URL}) ${rspX[computerChoice]} 0`;
+  $computer.style.backgroundSize = 'auto 200px'
+  setTimeout(changeComputerChoice, 50);
+}
+
+setTimeout(changeComputerChoice, 50);
