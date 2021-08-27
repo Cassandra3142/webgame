@@ -33,12 +33,37 @@ const changeComputerChoice = () => {
 
 let intervalId = setInterval(changeComputerChoice,50);
 
+const scoreTable = {
+  rock: 0,
+  scissors : 1,
+  paper : -1,
+};
+
 let clickable = true;
+let score = 0;
 const clickBtn = () => {
   if (clickable) {
     clearInterval(intervalId);
     clickable = false;
-    // 점수 계산 및 화면 표시
+    const myChoice = event.target.textContent === '바위'
+      ? 'rock'
+      : event.target.textContent === '가위'
+        ? 'scissors'
+        : 'paper';
+    const myScore = scoreTable[myChoice];
+    const computreScore = scoreTable[computerChoice];
+    const diff = myScore - computreScore;
+    let message ;
+    if([2,-1].includes(diff)) {
+      score += 1;
+      message = '승리';
+    } else if ([-2,1].includes(diff)) {
+      score -= 1;
+      message = '패배';
+    } else {
+      message = '무승부'
+    }
+    $score.textContent = `${message} 총 : ${score}점`;
     setTimeout(() =>{
       clickable = true;
       intervalId = setInterval(changeComputerChoice,50);
