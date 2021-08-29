@@ -3,7 +3,7 @@ const $result = document.querySelector('#result');
 
 let startTime;
 let endTime;
-
+const records = [];
 $screen.addEventListener('click',(event) => {
   if(event.target.classList.contains('waiting')) {
     $screen.classList.remove('waiting');
@@ -22,7 +22,12 @@ $screen.addEventListener('click',(event) => {
     alert('성급했습니다.')
   } else if (event.target.classList.contains('now')) {
     endTime = new Date();
-    $result.textContent = `${endTime - startTime} ms`;
+    const current = endTime - startTime;
+    records.push(current);
+    const average = records.reduce((a,c) => a + c) / records.length;
+    $result.textContent = `현재 : ${current} ms, 평균 : ${average}`;
+    startTime = null;
+    endTime = null;
     $screen.classList.remove('now');
     $screen.classList.add('waiting');
     $screen.textContent = '클릭해서 시작하세요'
