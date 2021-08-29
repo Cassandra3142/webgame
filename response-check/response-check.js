@@ -33,5 +33,14 @@ $screen.addEventListener('click',(event) => {
     $screen.classList.remove('now');
     $screen.classList.add('waiting');
     $screen.textContent = '클릭해서 시작하세요'
+    const topFive= records.sort((x,y) => x - y).slice(0,5);
+    topFive.forEach((top,index) => {
+      $result.append(
+        document.createElement('br'),
+        `${index + 1}위 : ${top}ms`,
+      );
+    })
   }
 })
+
+
